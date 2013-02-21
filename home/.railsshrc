@@ -1,0 +1,8 @@
+Command.define 'r' do |arg|
+  Rails::Sh::Rails.invoke(arg)
+end
+
+Rails::Sh::Rails.sub_commands.map do |c|
+  Command.completions << "r #{c}"
+end
+
