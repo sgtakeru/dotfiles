@@ -3,3 +3,8 @@
 *.orig
 eproject.cfg
 patches
+TAGS
+.settings
+
+gen/
+.yardoc
