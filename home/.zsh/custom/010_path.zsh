@@ -1,22 +1,36 @@
-# Add yourself some shortcuts to projects you often work on
-# Example:
-#
-# brainstormr=/Users/robbyrussell/Projects/development/planetargon/brainstormr
-#
 
-HISTFILE=$ZDOTDIR/.zsh_history
-HISTSIZE=10000000
-SAVEHIST=10000000
+export PATH=/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
 
+export ANT_HOME=$HOME/local/app/apache-ant-1.8.4
+PATH=$ANT_HOME/bin:$PATH
+PATH=$HOME/local/bin:$PATH
+PATH=/usr/local/heroku/bin:$PATH  ## Added by the Heroku Toolbelt
 
-
-# 3秒以上かかった処理は詳細表示
-REPORTTIME=3
-
-# [[ -s "/home/shigemori/.rvm/scripts/rvm" ]] && source "/home/shigemori/.rvm/scripts/rvm"  # This loads RVM into a shell session.
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
+ANDROID_HOME=$HOME/local/app/android-sdk-linux_r20
+export PATH="$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$PATH"
 
 
+# rbenv
+export PATH="$HOME/.rbenv/bin:$PATH"
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+rvm default
+
+# nvm と指定されたバージョンの Node.js がインストール済みの場合だけ
+# 設定を有効にする
+if [[ -f ~/.node/nvm.sh ]]; then
+  source ~/.node/nvm.sh
+fi
+
+source $HOME/.homesick/repos/homeshick/homeshick.sh
+
+
+
+# =====================================================
+# Define functions
+# =====================================================
+# from @metalefty
+r-grep() { find . -print0 | xargs -0 grep $@ ;}
 
 fuction copy_ubuntu_lsb() {
   sudo cp ~/Dropbox/Documents/ubuntu/lsb-release_ubuntu /etc/lsb-release
@@ -79,13 +93,6 @@ function fukkin10() {
   espeak "done"
 
 }
-
-
-# nvm と指定されたバージョンの Node.js がインストール済みの場合だけ
-# 設定を有効にする
-if [[ -f ~/.node/nvm.sh ]]; then
-  source ~/.node/nvm.sh
-fi
 
 function zip_rename() {
   find $1 -name '*.zip' | while read fn; do
