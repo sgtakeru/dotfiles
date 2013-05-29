@@ -89,6 +89,9 @@ module DynamicPrompt
     [head, line, ruby, dir, indent]. * ":"
   end
   private
+  def self.current_ruby
+    @@current_ruby ||= `rvm current`.strip
+  end
   def self.cwd
     pwd = Dir.pwd
     case pwd
