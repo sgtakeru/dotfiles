@@ -99,3 +99,23 @@ class Hash
     Hash[Array.toy(n).zip(Array.toy(n){|c| (96+(c+1)).chr})]
   end
 end
+
+
+def help2
+  print <<HELP
+  # _      : 直前の実行結果
+  # _ex_   : 直前の例外
+
+  # _in_[n] : 入力値
+  # _out_[n]: 出力値
+
+  # _dir_  : show directory path
+  # _file_ : show file path
+
+  # find-method  : メソッド検索
+  # show-models  : テーブル定義
+  # show-routes  : ルーティング表示
+  # show-middleware :
+  # reload! : Railsリロード
+HELP
+end
