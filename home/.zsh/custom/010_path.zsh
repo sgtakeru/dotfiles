@@ -24,6 +24,8 @@ fi
 
 source $HOME/.homesick/repos/homeshick/homeshick.sh
 
+[ -f /opt/boxen/env.sh ] && source /opt/boxen/env.sh
+[ -f /opt/boxen/nvm/nvm.sh ] && source /opt/boxen/nvm/nvm.sh
 
 
 # =====================================================
