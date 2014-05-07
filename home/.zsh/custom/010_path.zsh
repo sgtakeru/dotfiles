@@ -6,9 +6,11 @@ PATH=$ANT_HOME/bin:$PATH
 PATH=$HOME/local/bin:$PATH
 PATH=/usr/local/heroku/bin:$PATH  ## Added by the Heroku Toolbelt
 
-ANDROID_HOME=$HOME/local/app/adt-bundle-mac-x86_64-20131030/sdk
+ANDROID_HOME=$HOME/local/app/adt-bundle-mac-x86_64/sdk
 export PATH="$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$PATH"
 
+RDS_CLI_TOOL_HOME=$HOME/local/app/RDSCli-1.15.001
+export PATH="$RDS_CLI_TOOL_HOME/bin:$PATH"
 
 # rbenv
 export PATH="$HOME/.rbenv/bin:$PATH"

@@ -29,3 +29,4 @@ plugins=(git rails ruby rvm)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
+# export PATH=$PATH:node_modules/.bin:/opt/boxen/nodenv/shims:/opt/boxen/nodenv/bin:bin:/opt/boxen/rbenv/shims:/opt/boxen/rbenv/bin:/opt/boxen/rbenv/plugins/ruby-build/bin:/opt/boxen/bin:/opt/boxen/homebrew/bin:/opt/boxen/homebrew/sbin:/usr/bin:/bin:/usr/sbin:/sbin

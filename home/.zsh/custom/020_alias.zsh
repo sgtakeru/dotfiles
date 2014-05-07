@@ -6,7 +6,6 @@ alias p="cd ~/Projects"
 alias cd-android='cd ~/local/android-sdk-linux'
 
 alias h="history"
-alias go="gnome-open "
 alias l='ls -l'
 alias la='ls -lA'
 alias lv='lv -c'
