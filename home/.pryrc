@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # Load plugins (only those I whitelist)
 # Pry.config.should_load_plugins = false
 # Pry.plugins["doc"].activate!
