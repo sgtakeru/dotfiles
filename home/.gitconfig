@@ -23,7 +23,7 @@
     hist = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
         fetch-pulls = fetch origin +refs/pull/*:refs/remotes/pull/*
 [core]
-    excludesfile = ~/.gitignore_global
+	excludesfile = /opt/boxen/config/git/gitignore
     pager = less -r
 [color "diff"]
     whitespace = red
@@ -57,3 +57,17 @@
     keepbackup = false
 [push]
     default = tracking
+[include]
+    path = ~/.gitconfig.local
+
+[credential]
+helper = /opt/boxen/bin/boxen-git-credential
+
+[hub]
+protocol = https
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
