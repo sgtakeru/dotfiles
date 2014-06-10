@@ -30,6 +30,15 @@ if [[ -f ~/.node/nvm.sh ]]; then
   source ~/.node/nvm.sh
 fi
 
+
+
+# The next line updates PATH for the Google Cloud SDK.
+source $HOME/local/app/google-cloud-sdk/google-cloud-sdk/path.zsh.inc
+
+# The next line enables bash completion for gcloud.
+source $HOME/local/app/google-cloud-sdk/google-cloud-sdk/completion.zsh.inc
+
+
 # source $HOME/.homesick/repos/homeshick/homeshick.sh
 
 [ -f /opt/boxen/env.sh ] && source /opt/boxen/env.sh
