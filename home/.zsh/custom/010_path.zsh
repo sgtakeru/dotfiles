@@ -6,7 +6,7 @@ PATH=$ANT_HOME/bin:$PATH
 PATH=$HOME/local/bin:$PATH
 PATH=/usr/local/heroku/bin:$PATH  ## Added by the Heroku Toolbelt
 
-ANDROID_HOME=$HOME/local/app/adt-bundle-mac-x86_64/sdk
+ANDROID_HOME=$HOME/local/app/adt-bundle-mac-x86_64-20140702/sdk
 export PATH="$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$PATH"
 
 RDS_CLI_TOOL_HOME=$HOME/local/app/RDSCli-1.15.001
@@ -44,6 +44,13 @@ source $HOME/local/app/google-cloud-sdk/google-cloud-sdk/completion.zsh.inc
 [ -f /opt/boxen/env.sh ] && source /opt/boxen/env.sh
 [ -f /opt/boxen/nvm/nvm.sh ] && source /opt/boxen/nvm/nvm.sh
 
+
+# for docker
+export DOCKER_HOST=tcp://localhost:2375
+
+
+# for go
+export GOPATH=$HOME/local/
 
 # =====================================================
 # Define functions
