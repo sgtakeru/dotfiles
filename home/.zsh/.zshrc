@@ -24,7 +24,7 @@ ZSH_THEME="wedisagree"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git rails ruby rvm)
+plugins=(git rails ruby adb)
 
 source $ZSH/oh-my-zsh.sh
 
