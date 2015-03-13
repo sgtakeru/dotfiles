@@ -4,7 +4,6 @@ export PATH=/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/u
 export ANT_HOME=$HOME/local/app/apache-ant-1.8.4
 PATH=$ANT_HOME/bin:$PATH
 PATH=$HOME/local/bin:$PATH
-PATH=/usr/local/heroku/bin:$PATH  ## Added by the Heroku Toolbelt
 
 ANDROID_HOME=$HOME/local/app/adt-bundle-mac-x86_64-20140702/sdk
 export PATH="$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$PATH"
@@ -51,6 +50,10 @@ export DOCKER_HOST=tcp://localhost:2375
 
 # for go
 export GOPATH=$HOME/local/
+
+# gradle
+source $ZSH_PLUGINS/_gradle
+
 
 # =====================================================
 # Define functions
