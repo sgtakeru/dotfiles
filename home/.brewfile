@@ -1,6 +1,5 @@
 # Tap repositories and their packages
 tap 'homebrew/versions' || true
-tap 'rcmdnk/brewall' || true
 tap 'sanemat/font' || true
 tap 'caskroom/homebrew-cask' || true
 install 'brew-cask'
