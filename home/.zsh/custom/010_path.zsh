@@ -129,3 +129,34 @@ function zip_rename() {
      mv ${fn} ${name}'.zip'
   done
 }
+
+
+function peco-src () {
+  local selected_dir=$(ghq list -p | peco --query "$LBUFFER")
+  if [ -n "$selected_dir" ]; then
+    BUFFER="cd ${selected_dir}"
+    zle accept-line
+  fi
+  zle clear-screen
+}
+zle -N peco-src
+bindkey '^]' peco-src
+
+
+# Search shell history with peco: https://github.com/peco/peco
+# Adapted from: https://github.com/mooz/percol#zsh-history-search
+if which peco &> /dev/null; then
+  function peco_select_history() {
+    local tac
+    (which gtac &> /dev/null && tac="gtac") || \
+      (which tac &> /dev/null && tac="tac") || \
+      tac="tail -r"
+    BUFFER=$(fc -l -n 1 | eval $tac | \
+                peco --layout=bottom-up --query "$LBUFFER")
+    CURSOR=$#BUFFER # move cursor
+    zle -R -c       # refresh
+  }
+
+  zle -N peco_select_history
+  bindkey '^R' peco_select_history
+fi
