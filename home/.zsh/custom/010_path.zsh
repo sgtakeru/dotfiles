@@ -29,6 +29,8 @@ if [[ -f ~/.node/nvm.sh ]]; then
   source ~/.node/nvm.sh
 fi
 
+# Haskell stack
+export PATH="${HOME}/.local/bin:${PATH}"
 
 
 # The next line updates PATH for the Google Cloud SDK.
