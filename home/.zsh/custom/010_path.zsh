@@ -158,5 +158,5 @@ if which peco &> /dev/null; then
   }
 
   zle -N peco_select_history
-  bindkey '^R' peco_select_history
+  bindkey '^X^R' peco_select_history
 fi
