@@ -18,6 +18,7 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="$HOME/.cask/bin:$PATH"
 
 # For homebrew-brewfile
+export HOMEBREW_ROOT=/usr/local
 export HOMEBREW_BREWFILE=~/.brewfile
 
 # [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
