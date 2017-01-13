@@ -21,7 +21,6 @@ alias delete_white="grep -Er '^#$' . '"
 
 alias ec='emacsclient'
 alias ecc='emacsclient -c'
-alias sblm='~/local/app/Sublime\ Text\ 2/sublime_text'
 
 # ruby rails
 alias be='bundle exec'
@@ -30,7 +29,6 @@ alias rsu='rails s -u'
 
 # git
 alias g.s='git status'
-alias g1754='~/local/app/git-1.7.5.4/bin/git'
 
 # tmux
 alias tmux='tmux -2'
