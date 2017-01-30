@@ -1,51 +1,7 @@
 
-# directory shortcut
-alias dr="cd ~/Dropbox"
-alias dt="cd ~/Desktop"
-alias p="cd ~/Projects"
-alias cd-android='cd ~/local/android-sdk-linux'
-
-alias h="history"
-alias l='ls -l'
-alias la='ls -lA'
-alias lv='lv -c'
-alias cp='cp -irp'
-
-alias afind='ack-grep -il'
-alias 'gr'='grep --color=auto -RUIn'
-alias tree='tree -C'
-alias jman='LANG=ja_JP.utf8 man'
-
-alias delete_sharp='find . -name "*#*" -exec rm -i {} \;'
-alias delete_white="grep -Er '^#$' . '"
-
-alias ec='emacsclient'
-alias ecc='emacsclient -c'
-
-# ruby rails
-alias be='bundle exec'
-alias r=rails
-alias rsu='rails s -u'
-
-# git
-alias g.s='git status'
-
-# tmux
-alias tmux='tmux -2'
-alias mux='tmux -2'
-
-# less option
-export LESS='-R'
-export LESSOPEN='| /usr/share/source-highlight/src-hilite-lesspipe.sh %s'
-
-
-alias vi='nvim'
-alias vim='nvim'
-
 # =====================================================
 # Define functions
 # =====================================================
-
 
 # =====================================================
 # from @metalefty
