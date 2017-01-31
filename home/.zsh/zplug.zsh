@@ -1,6 +1,6 @@
 
 zplug "zplug/zplug", hook-build:'zplug --self-manage'
-zplug "~/.zsh/custom", from:local, use:"<->_*.zsh"
+zplug "~/.zsh", from:local, use:"<->_*.zsh"
 
 zplug "themes/wedisagree", from:oh-my-zsh
 # zplug "b4b4r07/ultimate", as:theme
