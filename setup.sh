@@ -13,3 +13,12 @@ do
     # TODO 実行時のディレクトリをスクリプトの位置に変更する
     ln -sf $PWD/home/$file $HOME/$file
 done
+
+
+if [ ! -d ~/.tmux/plugins/tpm ]; then
+  git clone git@github.com:tmux-plugins/tpm.git ~/.tmux/plugins/tpm
+fi
+
+if [ ! -d ~/.zplug ]; then
+  curl -sL zplug.sh/installer | zsh
+fi
