@@ -3,7 +3,11 @@
 # .gdbinit .gemrc .inputrc .irbrc .sbtconfig .screenrc .vimrc .vrapperrc import.scala
 # .dir_colors .rdebugrc
 
-DOT_FILES=( .aprc .bashrc .brewfile .gemrc .gitconfig .gitignore_global .irbrc .keysnail.js .pryrc .railsshrc .rdebugrc .tigrc .tmux.conf .zsh .zshenv )
+DOT_FILES=( .aprc .bashrc .brewfile \
+                  .gitconfig .gitconfig.local .gitignore_global \
+                  .gemrc .irbrc .pryrc .railsshrc .rdebugrc \
+                  .keysnail.js .tigrc .tmux.conf \
+                  .zsh .zshenv )
 # .ssh
 # .netrc
 
