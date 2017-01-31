@@ -1,6 +1,3 @@
-
-ZSH_THEME="wedisagree"
-
 if [[ -f ~/.zplug/init.zsh ]]; then
     export ZPLUG_LOADFILE=~/.zsh/zplug.zsh
     source ~/.zplug/init.zsh
