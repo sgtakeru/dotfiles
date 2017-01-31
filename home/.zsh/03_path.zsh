@@ -21,6 +21,8 @@ export PATH="$HOME/.cask/bin:$PATH"
 export HOMEBREW_ROOT=/usr/local
 export HOMEBREW_BREWFILE=~/.brewfile
 
+export PATH=$ZPLUG_HOME/bin:$PATH
+
 # [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 # rvm default
 
