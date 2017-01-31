@@ -29,32 +29,29 @@
     whitespace = red
 [color]
     ui = auto
-[diff]
-    tool = meld
-    # external = ext_p4diff
-#[merge]
-#        tool = ext_p4merge
-#        keepbackup = false
-#[mergetool "ext_p4merge"]
-#        trustExitCode = false
-#        cmd = ext_p4merge \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
 [gui]
     editor = gedit
     diffcontext = 7
     historybrowser = gitk
     fontdiff = -family \"Ricty Discord\" -size 9 -weight normal -slant roman -underline 0 -overstrike 0
-[difftool "Meld"]
-    path = /usr/bin/meld
-    cmd = '/usr/bin/meld' $LOCAL $REMOTE
-[mergetool "Meld"]
-    path = /usr/bin/meld
-    cmd = '/usr/bin/meld' $BASE $LOCAL $REMOTE $MERGED
-[mergetool]
-    keepBackup = false
+[diff]
+    tool = meld
+[difftool]
+    prompt = false
+[difftool "meld"]
+    trustExitCode = true
+    cmd = open -W -a Meld --args \"$LOCAL\" \"$PWD/$REMOTE\"
 [merge]
     ff = false
     tool = meld
     keepbackup = false
+[mergetool]
+    prompt = false
+    keepBackup = false
+[mergetool "meld"]
+    trustExitCode = true
+    cmd = open -W -a Meld --args --auto-merge \"$PWD/$LOCAL\" \"$PWD/$BASE\" \"$PWD/$REMOTE\" --output=\"$PWD/$MERGED\"
+
 [push]
     default = tracking
 [include]
