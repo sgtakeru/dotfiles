@@ -10,6 +10,10 @@ export PATH="$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$PATH"
 RDS_CLI_TOOL_HOME=$HOME/local/app/RDSCli-1.15.001
 export PATH="$RDS_CLI_TOOL_HOME/bin:$PATH"
 
+# anyenv
+export PATH="$HOME/.anyenv/bin:$PATH"
+eval "$(anyenv init -)"
+
 # rbenv
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
