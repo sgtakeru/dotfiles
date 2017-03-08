@@ -42,10 +42,5 @@ source $HOME/local/app/google-cloud-sdk/google-cloud-sdk/path.zsh.inc
 # The next line enables bash completion for gcloud.
 source $HOME/local/app/google-cloud-sdk/google-cloud-sdk/completion.zsh.inc
 
-
-# for docker
-export DOCKER_HOST=tcp://localhost:2375
-
-
 # for go
 export GOPATH=$HOME/local/

@@ -42,3 +42,5 @@ globalias() {
 zle -N globalias
 
 bindkey " " globalias
+bindkey "^ " magic-space
+bindkey -M isearch " " magic-space

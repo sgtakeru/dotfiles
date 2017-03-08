@@ -6,6 +6,8 @@ zplug "b4b4r07/enhancd", use:init.sh
 zplug "b4b4r07/zsh-gomi", as:command, use:bin/gomi
 
 zplug "themes/wedisagree", from:oh-my-zsh
+# zplug "mafredri/zsh-async", from:github
+# zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
 # zplug "b4b4r07/ultimate", as:theme
 # zplug "S1cK94/minimal", as:theme
 
