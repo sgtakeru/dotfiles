@@ -42,7 +42,7 @@ end
 
 # ============================================================
 # auto_load
-auto_loads = %w(awesome_print pry-debugger)
+auto_loads = %w(awesome_print pry-byebug)
 auto_loads.each do |gem|
   begin
     require gem
@@ -54,24 +54,19 @@ end
 # ============================================================
 # use always awesome_print
 if defined? AwesomePrint
-  Pry.config.print = proc { |output, value| Pry::Helpers::BaseHelpers.stagger_output("=> #{value.ai}", output) }
+  AwesomePrint.pry!
 end
 
 
 # ============================================================
 # pry-debugger alias
-if defined? PryDebugger
+if defined?(PryByebug)
   Pry.commands.alias_command 'c', 'continue'
   Pry.commands.alias_command 's', 'step'
   Pry.commands.alias_command 'n', 'next'
   Pry.commands.alias_command 'f', 'finish'
   Pry.commands.alias_command 'bp','break'
-  Pry.commands.alias_command 'bp-c','bp --condition'
-  Pry.commands.alias_command 'bp-s','bp --show'
-  Pry.commands.alias_command 'bp-delete','bp --delete'
-  Pry.commands.alias_command 'bp-delete-all','bp --disable-all'
 end
-
 
 # ============================================================
 # benchmark
