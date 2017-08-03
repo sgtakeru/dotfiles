@@ -10,10 +10,6 @@ export PATH="$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$PATH"
 RDS_CLI_TOOL_HOME=$HOME/local/app/RDSCli-1.15.001
 export PATH="$RDS_CLI_TOOL_HOME/bin:$PATH"
 
-# anyenv
-export PATH="$HOME/.anyenv/bin:$PATH"
-eval "$(anyenv init -)"
-
 # rbenv
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
@@ -32,9 +28,13 @@ export PATH=$ZPLUG_HOME/bin:$PATH
 
 # nvm と指定されたバージョンの Node.js がインストール済みの場合だけ
 # 設定を有効にする
-if [[ -f ~/.node/nvm.sh ]]; then
-  source ~/.node/nvm.sh
-fi
+# if [[ -f ~/.node/nvm.sh ]]; then
+#   source ~/.node/nvm.sh
+# fi
+
+# Node環境用にNコマンドを使う
+export N_PREFIX=$HOME/.n
+export PATH=$N_PREFIX/bin:$PATH
 
 # Haskell stack
 export PATH="${HOME}/.local/bin:${PATH}"
