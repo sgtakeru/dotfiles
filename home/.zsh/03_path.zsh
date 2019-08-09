@@ -36,4 +36,6 @@ source $HOME/local/app/google-cloud-sdk/google-cloud-sdk/path.zsh.inc
 source $HOME/local/app/google-cloud-sdk/google-cloud-sdk/completion.zsh.inc
 
 # for go
-export GOPATH=$HOME/local/
+export GOPATH=$HOME/local
+export PATH=$PATH:$GOPATH/bin
+
