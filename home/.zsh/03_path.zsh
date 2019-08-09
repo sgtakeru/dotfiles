@@ -23,22 +23,11 @@ export HOMEBREW_BREWFILE=~/.brewfile
 
 export PATH=$ZPLUG_HOME/bin:$PATH
 
-# [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-# rvm default
-
-# nvm と指定されたバージョンの Node.js がインストール済みの場合だけ
-# 設定を有効にする
-# if [[ -f ~/.node/nvm.sh ]]; then
-#   source ~/.node/nvm.sh
-# fi
-
-# Node環境用にNコマンドを使う
-export N_PREFIX=$HOME/.n
-export PATH=$N_PREFIX/bin:$PATH
+# For nodenv
+eval "$(nodenv init -)"
 
 # Haskell stack
 export PATH="${HOME}/.local/bin:${PATH}"
-
 
 # The next line updates PATH for the Google Cloud SDK.
 source $HOME/local/app/google-cloud-sdk/google-cloud-sdk/path.zsh.inc
