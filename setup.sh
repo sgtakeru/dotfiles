@@ -3,10 +3,10 @@
 # .gdbinit .gemrc .inputrc .irbrc .sbtconfig .screenrc .vimrc .vrapperrc import.scala
 # .dir_colors .rdebugrc
 
-DOT_FILES=( .aprc .bashrc .brewfile \
+DOT_FILES=( .bashrc \
                   .gitconfig .gitconfig.local .gitignore_global \
-                  .gemrc .irbrc .pryrc .railsshrc .rdebugrc \
-                  .keysnail.js .tigrc .tmux.conf \
+                  .gemrc .irbrc .pryrc \
+                  .tigrc .tmux.conf \
                   .zsh .zshenv )
 # .ssh
 # .netrc
