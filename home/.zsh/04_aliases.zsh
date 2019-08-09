@@ -51,7 +51,7 @@ alias mux='tmux -2'
 
 # less option
 export LESS='-R'
-export LESSOPEN='| /usr/share/source-highlight/src-hilite-lesspipe.sh %s'
+export LESSOPEN='| /usr/local/bin/src-hilite-lesspipe.sh %s'
 
 # zsh
 export WORDCHARS='*?_.[]~-=&;!#$%^(){}<>'
