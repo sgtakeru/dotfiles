@@ -17,36 +17,6 @@ ANSI[:CYAN] = "\e[36m"
 ANSI[:WHITE] = "\e[37m"
 
 # ===========================
-# IRB初期設定
-module IRB
-  class Context
-    attr_reader :count
-    def mock_evaluate(line, line_no)
-      begin
-        old_evaluate(line, line_no)
-      rescue NoMethodError, NameError
-        @count += 1
-        if @count > 2
-          print "(ﾟДﾟ#)ねーよ!!!\n"
-          @count = 0
-        end
-        raise
-      end
-    end
-
-    def mock_initialize(irb, workspace = nil, input_method = nil, output_method = nil)
-      old_initialize(irb, workspace = nil, input_method = nil, output_method = nil)
-      @count = 0
-    end
-    alias_method :old_evaluate, :evaluate
-    alias_method :evaluate, :mock_evaluate
-
-    alias_method :old_initialize, :initialize
-    alias_method :initialize, :mock_initialize
-
-  end
-end
-
 
 # tab 補完
 require 'irb/completion'
