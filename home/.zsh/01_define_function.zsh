@@ -75,12 +75,5 @@ fuction copy_ubuntu_lsb() {
   cat /etc/issue.net /etc/issue /etc/lsb-release
 }
 
-
-
 # =====================================================
-# FOR zeus
-function  rezeus() {
-  rm -f .zeus.sock
-  ps -ef | grep zeus | awk ' { print $2 } ' | xargs kill -9 | true
-  zeus start
 }
