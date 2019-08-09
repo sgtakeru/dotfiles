@@ -1,11 +1,9 @@
 export PATH=/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
-export ANT_HOME=$HOME/local/app/apache-ant-1.8.4
-PATH=$ANT_HOME/bin:$PATH
 PATH=$HOME/local/bin:$PATH
 
-ANDROID_HOME=$HOME/local/app/adt-bundle-mac-x86_64-20140702/sdk
-export PATH="$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$PATH"
+export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk
+export PATH="$ANDROID_SDK_ROOT/platform-tools:$ANDROID_SDK_ROOT/tools:$PATH"
 
 RDS_CLI_TOOL_HOME=$HOME/local/app/RDSCli-1.15.001
 export PATH="$RDS_CLI_TOOL_HOME/bin:$PATH"
@@ -39,3 +37,9 @@ source $HOME/local/app/google-cloud-sdk/google-cloud-sdk/completion.zsh.inc
 export GOPATH=$HOME/local
 export PATH=$PATH:$GOPATH/bin
 
+# for flutter
+export PATH="$PATH:$HOME/local/app/flutter/bin"
+
+# for gmk
+export PATH="/usr/local/opt/avr-gcc@7/bin:$PATH"
+export LDFLAGS="-L/usr/local/opt/avr-gcc@7/lib"
