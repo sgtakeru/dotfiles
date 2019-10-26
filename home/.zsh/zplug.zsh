@@ -5,9 +5,8 @@ zplug "~/.zsh", from:local, use:"<->_*.zsh"
 zplug "b4b4r07/enhancd", use:init.sh
 zplug "b4b4r07/zsh-gomi", as:command, use:bin/gomi
 
-# zplug "themes/wedisagree", from:oh-my-zsh
-zplug denysdovhan/spaceship-prompt, use:spaceship.zsh, from:github, as:theme
-
+# theme
+zplug romkatv/powerlevel10k, use:powerlevel10k.zsh-theme
 # zplug "mafredri/zsh-async", from:github
 # zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
 # zplug "b4b4r07/ultimate", as:theme

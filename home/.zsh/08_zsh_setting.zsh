@@ -81,5 +81,3 @@ zle -N self-insert url-quote-magic
 # Remove comannd of 'history' or 'fc -l' from history list
 setopt hist_no_store
 
-
-SPACESHIP_TIME_SHOW=true
