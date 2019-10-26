@@ -44,3 +44,5 @@ zle -N globalias
 bindkey " " globalias
 bindkey "^ " magic-space
 bindkey -M isearch " " magic-space
+
+export EMOJI_CLI_KEYBIND="^x^e"

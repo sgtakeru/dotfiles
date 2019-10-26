@@ -4,6 +4,7 @@ zplug "~/.zsh", from:local, use:"<->_*.zsh"
 
 zplug "b4b4r07/enhancd", use:init.sh
 zplug "b4b4r07/zsh-gomi", as:command, use:bin/gomi
+zplug "b4b4r07/emoji-cli", defer:3
 
 # theme
 zplug romkatv/powerlevel10k, use:powerlevel10k.zsh-theme
