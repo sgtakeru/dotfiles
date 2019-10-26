@@ -16,6 +16,7 @@ eval "$(rbenv init -)"
 export PATH="$HOME/.cask/bin:$PATH"
 
 # For homebrew-brewfile
+export PATH="/usr/local/sbin:$PATH"
 export HOMEBREW_ROOT=/usr/local
 export HOMEBREW_BREWFILE=~/.brewfile
 
