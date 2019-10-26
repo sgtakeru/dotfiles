@@ -6,6 +6,9 @@ patches
 TAGS
 .settings
 
+.cache
+.bash_history
+
 gen/
 .yardoc
 
