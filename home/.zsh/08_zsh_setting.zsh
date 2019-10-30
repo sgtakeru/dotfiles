@@ -4,6 +4,8 @@
 # brainstormr=/Users/robbyrussell/Projects/development/planetargon/brainstormr
 #
 
+autoload -Uz compinit && compinit
+
 HISTFILE=$ZDOTDIR/.zsh_history
 HISTSIZE=10000000
 SAVEHIST=10000000
@@ -12,7 +14,7 @@ REPORTTIME=3                # 3秒以上かかった処理は詳細表示
 setopt extended_history     # 履歴ファイルに時刻を記録
 setopt share_history        # ターミナル間で履歴を共有する
 
-
+setopt auto_cd
 
 setopt auto_list            # 補完候補を一覧で表示する
 setopt auto_menu            # 補完キー連打で候補順に自動で補完する
