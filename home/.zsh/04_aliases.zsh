@@ -57,11 +57,6 @@ export LESSOPEN='| /usr/local/bin/src-hilite-lesspipe.sh %s'
 # zsh
 export WORDCHARS='*?_.[]~-=&;!#$%^(){}<>'
 
-if has 'nvim'; then
-    alias vi='nvim'
-    alias vim='nvim'
-fi
-
 # Use if colordiff exists
 if has 'colordiff'; then
     alias diff='colordiff -u'
