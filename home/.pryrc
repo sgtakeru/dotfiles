@@ -57,6 +57,11 @@ if defined? AwesomePrint
   AwesomePrint.pry!
 end
 
+# ============================================================
+# use first tenant
+if defined? Tenant
+  Tenant.first.switch!
+end
 
 # ============================================================
 # pry-debugger alias
