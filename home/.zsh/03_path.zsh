@@ -18,7 +18,7 @@ export PATH="$HOME/.cask/bin:$PATH"
 
 # For homebrew-brewfile
 export PATH="/usr/local/sbin:$PATH"
-export HOMEBREW_ROOT=/usr/local
+export HOMEBREW_PREFIX=/usr/local
 export HOMEBREW_BREWFILE=~/.brewfile
 
 export PATH=$ZPLUG_HOME/bin:$PATH
