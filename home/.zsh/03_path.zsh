@@ -32,11 +32,9 @@ eval "$(nodenv init -)"
 # Haskell stack
 export PATH="${HOME}/.local/bin:${PATH}"
 
-# The next line updates PATH for the Google Cloud SDK.
-source $HOME/local/app/google-cloud-sdk/google-cloud-sdk/path.zsh.inc
-
-# The next line enables bash completion for gcloud.
-source $HOME/local/app/google-cloud-sdk/google-cloud-sdk/completion.zsh.inc
+# for Google Cloud SDK.
+source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
+source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
 
 # for go
 export GOPATH=$HOME/local
