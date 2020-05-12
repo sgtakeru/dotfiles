@@ -48,3 +48,7 @@ export PATH="$PATH:$HOME/local/app/flutter/bin"
 # for gmk
 export PATH="/usr/local/opt/avr-gcc@7/bin:$PATH"
 export LDFLAGS="-L/usr/local/opt/avr-gcc@7/lib"
+
+# for Java
+export JAVA_HOME=`/usr/libexec/java_home -v "1.8"`
+PATH=${JAVA_HOME}/bin:${PATH}
