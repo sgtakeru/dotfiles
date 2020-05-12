@@ -9,9 +9,6 @@ export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk
 export PATH="$ANDROID_SDK_ROOT/platform-tools:$ANDROID_SDK_ROOT/tools:$PATH"
 
-RDS_CLI_TOOL_HOME=$HOME/local/app/RDSCli-1.15.001
-export PATH="$RDS_CLI_TOOL_HOME/bin:$PATH"
-
 # rbenv
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
@@ -50,3 +47,16 @@ export LDFLAGS="-L/usr/local/opt/avr-gcc@7/lib"
 # for Java
 export JAVA_HOME=`/usr/libexec/java_home -v "1.8"`
 PATH=${JAVA_HOME}/bin:${PATH}
+
+# for ncurses
+export PKG_CONFIG="/usr/local/bin/pkg-config"
+
+export PATH="/usr/local/opt/ncurses/bin:$PATH"
+export LDFLAGS="-L/usr/local/opt/ncurses/lib"
+export CPPFLAGS="-I/usr/local/opt/ncurses/include"
+export PKG_CONFIG_PATH="/usr/local/opt/ncurses/lib/pkgconfig"
+
+export LDFLAGS="$LDFLAGS -L/usr/local/opt/readline/lib"
+export CPPFLAGS="$CPPFLAGS -I/usr/local/opt/readline/include"
+export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:/usr/local/opt/readline/lib/pkgconfig"
+

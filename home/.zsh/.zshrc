@@ -45,10 +45,8 @@ zinit ice from"gh-r" as"program"
 zinit load x-motemen/ghq
 
 zinit snippet ~/.zsh/00_utils.zsh
-zinit snippet ~/.zsh/01_define_function.zsh
 zinit snippet ~/.zsh/02_keybinds.zsh
 zinit snippet ~/.zsh/03_path.zsh
 zinit snippet ~/.zsh/04_aliases.zsh
 zinit snippet ~/.zsh/08_zsh_setting.zsh
-zinit snippet ~/.zsh/90_project_alias.zsh
 zinit snippet ~/.zsh/99_work.zsh
