@@ -2,6 +2,10 @@ export PATH=/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 PATH=$HOME/local/bin:$PATH
 
+# for gnu coreutils
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+
 export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk
 export PATH="$ANDROID_SDK_ROOT/platform-tools:$ANDROID_SDK_ROOT/tools:$PATH"
 
