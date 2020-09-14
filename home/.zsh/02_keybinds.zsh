@@ -13,21 +13,20 @@ if which peco &> /dev/null; then
   zle -N peco-src
   bindkey '^]' peco-src
 
-  function peco_select_history() {
-    local tac
-    (which gtac &> /dev/null && tac="gtac") || \
-      (which tac &> /dev/null && tac="tac") || \
-      tac="tail -r"
-    BUFFER=$(fc -l -n 1 | eval $tac | \
-           peco --layout=bottom-up --query "$LBUFFER")
-    CURSOR=$#BUFFER # move cursor
-    zle -R -c     # refresh
+  function apeco_select_history() {
+      local tac
+      (which gtac &> /dev/null && tac="gtac") || \
+          (which tac &> /dev/null && tac="tac") || \
+          tac="tail -r"
+      BUFFER=$(fc -l -n 1 | eval $tac | \
+                   peco --layout=bottom-up --query "$LBUFFER")
+      CURSOR=$#BUFFER # move cursor
+      zle -R -c     # refresh
   }
 
   zle -N peco_select_history
   bindkey '^X^W' peco_select_history
 fi
-
 
 # expand global aliases by space
 # http://blog.patshead.com/2012/11/automatically-expaning-zsh-global-aliases---simplified.html

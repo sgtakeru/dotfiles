@@ -1,4 +1,4 @@
-alias ls='ls -GF'
+alias ls='ls -GF --color=auto'
 alias grep='grep --color'
 alias cp="cp -i"
 alias mv="mv -i"
@@ -52,7 +52,12 @@ alias mux='tmux -2'
 
 # less option
 export LESS='-R'
-export LESSOPEN='| /usr/local/bin/src-hilite-lesspipe.sh %s'
+export LESSOPEN="| $(which highlight) %s --out-format xterm256 --force -s breeze --no-trailing-nl"
+alias less='less -m -N -g -i -J --line-numbers --underline-special'
+
+alias cat="highlight $1 --out-format xterm256 --force -s breeze --no-trailing-nl"
+alias catl="highlight $1 --out-format xterm256 -l --force -s breeze --no-trailing-nl"
+
 
 # zsh
 export WORDCHARS='*?_.[]~-=&;!#$%^(){}<>'

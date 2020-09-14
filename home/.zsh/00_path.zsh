@@ -21,8 +21,6 @@ export PATH="/usr/local/sbin:$PATH"
 export HOMEBREW_PREFIX=/usr/local
 export HOMEBREW_BREWFILE=~/.brewfile
 
-export PATH=$ZPLUG_HOME/bin:$PATH
-
 # For nodenv
 eval "$(nodenv init -)"
 
@@ -35,7 +33,8 @@ source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
 
 # for go
 export GOPATH=$HOME/local
-export PATH=$PATH:$GOPATH/bin
+export PATH=$GOPATH/bin:$PATH
+export GO111MODULE=on
 
 # for flutter
 export PATH="$PATH:$HOME/local/app/flutter/bin"
@@ -60,3 +59,5 @@ export LDFLAGS="$LDFLAGS -L/usr/local/opt/readline/lib"
 export CPPFLAGS="$CPPFLAGS -I/usr/local/opt/readline/include"
 export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:/usr/local/opt/readline/lib/pkgconfig"
 
+
+export PATH=/usr/local/Cellar/jmeter/5.3/libexec/bin:${PATH}

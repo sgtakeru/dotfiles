@@ -44,9 +44,11 @@ zinit load romkatv/powerlevel10k
 zinit ice from"gh-r" as"program"
 zinit load x-motemen/ghq
 
-zinit snippet ~/.zsh/00_utils.zsh
+zinit snippet ~/.zsh/00_path.zsh
+zinit snippet "${HOMEBREW_PREFIX}/opt/fzf/shell/key-bindings.zsh"
+
+zinit snippet ~/.zsh/01_utils.zsh
 zinit snippet ~/.zsh/02_keybinds.zsh
-zinit snippet ~/.zsh/03_path.zsh
-zinit snippet ~/.zsh/04_aliases.zsh
-zinit snippet ~/.zsh/08_zsh_setting.zsh
+zinit snippet ~/.zsh/03_aliases.zsh
+zinit snippet ~/.zsh/05_zsh_setting.zsh
 zinit snippet ~/.zsh/99_work.zsh
