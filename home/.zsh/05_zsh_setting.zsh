@@ -11,28 +11,22 @@ HISTSIZE=10000000
 SAVEHIST=10000000
 REPORTTIME=3                # 3秒以上かかった処理は詳細表示
 
-setopt extended_history     # 履歴ファイルに時刻を記録
-setopt share_history        # ターミナル間で履歴を共有する
-
 setopt auto_cd
+setopt auto_pushd
 
 setopt auto_list            # 補完候補を一覧で表示する
 setopt auto_menu            # 補完キー連打で候補順に自動で補完する
 setopt auto_pushd           # cd 時に自動でディレクトリスタックに追加する
 
 
-
-
-# 直前と重複するコマンドを記録しない
-setopt hist_ignore_dups
+setopt extended_history # Record start and end time
+setopt share_history # share history between terminals
+setopt hist_reduce_blanks # reduce extra blank
+setopt hist_ignore_dups # 直前と重複するコマンドを記録しない
 setopt hist_ignore_all_dups # 既にヒストリにあるコマンドは古い方を削除
-setopt hist_reduce_blanks   # コマンドラインの余計なスペースを削除
-# スペースから始まるコマンド行はヒストリに残さない
-setopt hist_ignore_space
-
-# 履歴をすぐに追加する（通常はシェル終了時）
-setopt inc_append_history
-
+setopt hist_ignore_space # Ignore the begining space command to history file
+setopt hist_no_store # Remove comannd of 'history' or 'fc -l' from history list
+setopt hist_no_functions # Remove functions from history list
 
 # rm * の前に確認をとる
 setopt rm_star_wait
@@ -80,6 +74,4 @@ autoload -Uz url-quote-magic
 zle -N self-insert url-quote-magic
 
 
-# Remove comannd of 'history' or 'fc -l' from history list
-setopt hist_no_store
 
