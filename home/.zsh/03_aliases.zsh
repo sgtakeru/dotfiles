@@ -53,7 +53,7 @@ alias mux='tmux -2'
 # less option
 export LESS='-R'
 export LESSOPEN="| $(which highlight) %s --out-format xterm256 --force -s breeze --no-trailing-nl"
-alias less='less -m -N -g -i -J --line-numbers --underline-special'
+alias less='less -M -g -i -J --underline-special'
 
 alias cat="highlight $1 --out-format xterm256 --force -s breeze --no-trailing-nl"
 alias catl="highlight $1 --out-format xterm256 -l --force -s breeze --no-trailing-nl"
