@@ -48,7 +48,8 @@ export PATH="/usr/local/opt/avr-gcc@7/bin:$PATH"
 export LDFLAGS="-L/usr/local/opt/avr-gcc@7/lib"
 
 # for Java
-export JAVA_HOME=`/usr/libexec/java_home -v "1.8"`
+#export JAVA_HOME=`/usr/libexec/java_home -v "1.8"`
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_192.jdk/Contents/Home"
 PATH=${JAVA_HOME}/bin:${PATH}
 
 # for ncurses
