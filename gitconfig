@@ -20,6 +20,7 @@
     r = !git ls-files -z --deleted | xargs -0 git rm
     s = status -sb
     st = status -sb
+    sw = switch
     hist = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
         fetch-pulls = fetch origin +refs/pull/*:refs/remotes/pull/*
 [core]
@@ -63,14 +64,8 @@
     protocol = https
 [ghq]
     root = ~/local/src
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
 [diff "xlsx"]
     binary = true
     textconv = $GOPATH/bin/git-xlsx-textconv
 [commit]
-	template = /Users/shigemori/.stCommitMsg
+	template = ~/.gitmessage
