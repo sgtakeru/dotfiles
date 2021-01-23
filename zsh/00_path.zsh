@@ -66,3 +66,6 @@ export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:/usr/local/opt/readline/lib/pkgconfig"
 
 
 export PATH=/usr/local/Cellar/jmeter/5.3/libexec/bin:${PATH}
+
+# Added by serverless binary installer
+export PATH="$HOME/.serverless/bin:$PATH"
