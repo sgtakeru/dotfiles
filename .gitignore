@@ -1,8 +1,5 @@
-home/.zsh/.zinit
-home/.zsh/9*
-
-
 zsh/.zinit
 zsh/9*
 zsh/.zsh_sessions/*
+zsh/.zsh_history
 
