@@ -21,9 +21,6 @@ fpath=(~/.zsh $fpath)
 #     zplug load
 # fi
 
-# To customize prompt, run `p10k configure` or edit ~/.zsh/.p10k.zsh.
-[[ -f ~/.zsh/.p10k.zsh ]] && source ~/.zsh/.p10k.zsh
-
 ### Added by Zinit's installer
 if [[ ! -f $HOME/.zsh/.zinit/bin/zinit.zsh ]]; then
     print -P "%F{33}▓▒░ %F{220}Installing DHARMA Initiative Plugin Manager (zdharma/zinit)…%f"
@@ -60,5 +57,5 @@ zinit snippet ~/.zsh/03_aliases.zsh
 zinit snippet ~/.zsh/05_zsh_setting.zsh
 zinit snippet ~/.zsh/99_work.zsh
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# To customize prompt, run `p10k configure` or edit ~/Dropbox/Mackup/dotfiles/p10k.zsh.
+[[ ! -f ~/Dropbox/Mackup/dotfiles/p10k.zsh ]] || source ~/Dropbox/Mackup/dotfiles/p10k.zsh
