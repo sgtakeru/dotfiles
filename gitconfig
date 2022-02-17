@@ -36,22 +36,21 @@
     historybrowser = gitk
     fontdiff = -family \"Ricty Discord\" -size 9 -weight normal -slant roman -underline 0 -overstrike 0
 [diff]
-    tool = meld
+    tool = vscode
 [difftool]
     prompt = false
-[difftool "meld"]
+[difftool "vscode"]
     trustExitCode = true
-    cmd = open -W -a Meld --args \"$LOCAL\" \"$PWD/$REMOTE\"
+    cmd = code --wait --diff $LOCAL $REMOTE
 [merge]
     ff = false
-    tool = meld
+    tool = vscode
     keepbackup = false
 [mergetool]
     prompt = false
     keepBackup = false
-[mergetool "meld"]
-    trustExitCode = true
-    cmd = open -W -a Meld --args --auto-merge \"$PWD/$LOCAL\" \"$PWD/$BASE\" \"$PWD/$REMOTE\" --output=\"$PWD/$MERGED\"
+[mergetool "vscode"]
+    cmd = code --wait $MERGED
 
 [push]
     default = tracking
