@@ -1,32 +1,32 @@
 
-# Search shell history with peco: https://github.com/peco/peco
-# Adapted from: https://github.com/mooz/percol#zsh-history-search
-if which peco &> /dev/null; then
-  function peco-src () {
-    local selected_dir=$(ghq list -p | peco --query "$LBUFFER")
+
+function git-branch-fzf() {
+    local selected_branch=$(git for-each-ref --format='%(refname)' --sort=-committerdate refs/heads | perl -pne 's{^refs/heads/}{}' | fzf --query "$LBUFFER")
+
+  if [ -n "$selected_branch" ]; then
+    BUFFER="git sw ${selected_branch}"
+    zle accept-line
+  fi
+  zle reset-prompt
+}
+
+zle -N git-branch-fzf
+bindkey "^g^b" git-branch-fzf
+
+
+function ghq-fzf() {
+    local selected_dir=$(ghq list | fzf --query="$LBUFFER")
+
     if [ -n "$selected_dir" ]; then
-      BUFFER="cd ${selected_dir}"
-      zle accept-line
+        BUFFER="cd $(ghq root)/${selected_dir}"
+        zle accept-line
     fi
-    zle clear-screen
-  }
-  zle -N peco-src
-  bindkey '^]' peco-src
 
-  function apeco_select_history() {
-      local tac
-      (which gtac &> /dev/null && tac="gtac") || \
-          (which tac &> /dev/null && tac="tac") || \
-          tac="tail -r"
-      BUFFER=$(fc -l -n 1 | eval $tac | \
-                   peco --layout=bottom-up --query "$LBUFFER")
-      CURSOR=$#BUFFER # move cursor
-      zle -R -c     # refresh
-  }
+    zle reset-prompt
+}
 
-  zle -N peco_select_history
-  bindkey '^X^W' peco_select_history
-fi
+zle -N ghq-fzf
+bindkey "^]" ghq-fzf
 
 # expand global aliases by space
 # http://blog.patshead.com/2012/11/automatically-expaning-zsh-global-aliases---simplified.html
