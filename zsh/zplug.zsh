@@ -2,6 +2,7 @@
 zplug "zplug/zplug", hook-build:'zplug --self-manage'
 zplug "~/.zsh", from:local, use:"<->_*.zsh"
 
+# ディレクトリ移動を高速化（fzf であいまい検索）
 zplug "b4b4r07/enhancd", use:init.sh
 zplug "b4b4r07/zsh-gomi", as:command, use:bin/gomi
 zplug "b4b4r07/emoji-cli", defer:3
@@ -25,9 +26,6 @@ zplug "junegunn/fzf", as:command, use:bin/fzf-tmux
 
 # fzf でよく使う関数の詰め合わせ
 zplug "mollifier/anyframe"
-
-# ディレクトリ移動を高速化（fzf であいまい検索）
-zplug "b4b4r07/enhancd", use:init.sh
 
 # git のローカルリポジトリを一括管理（fzf でリポジトリへジャンプ）
 zplug "motemen/ghq", as:command, from:gh-r
