@@ -4,7 +4,7 @@ function git-branch-fzf() {
     local selected_branch=$(git for-each-ref --format='%(refname)' --sort=-committerdate refs/heads | perl -pne 's{^refs/heads/}{}' | fzf --query "$LBUFFER")
 
   if [ -n "$selected_branch" ]; then
-    BUFFER="git sw ${selected_branch}"
+    BUFFER="git switch ${selected_branch}"
     zle accept-line
   fi
   zle reset-prompt
