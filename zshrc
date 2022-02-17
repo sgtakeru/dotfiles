@@ -7,55 +7,56 @@ fi
 
 fpath=(~/.zsh $fpath)
 
-# if [[ -f ~/.zplug/init.zsh ]]; then
-#     export ZPLUG_LOADFILE=~/.zsh/zplug.zsh
-#     source ~/.zplug/init.zsh
-
-#     if ! zplug check --verbose; then
-#         printf "Install? [y/N]: "
-#         if read -q; then
-#             echo; zplug install
-#         fi
-#         echo
-#     fi
-#     zplug load
-# fi
-
-### Added by Zinit's installer
-if [[ ! -f $HOME/.zsh/.zinit/bin/zinit.zsh ]]; then
-    print -P "%F{33}▓▒░ %F{220}Installing DHARMA Initiative Plugin Manager (zdharma/zinit)…%f"
-    command mkdir -p "$HOME/.zsh/.zinit" && command chmod g-rwX "$HOME/.zsh/.zinit"
-    command git clone https://github.com/zdharma/zinit "$HOME/.zsh/.zinit/bin" && \
-        print -P "%F{33}▓▒░ %F{34}Installation successful.%f" || \
-        print -P "%F{160}▓▒░ The clone has failed.%f"
+### zi
+# install
+if [[ ! -d "${HOME}/.zi" ]]; then
+  zi_home="${HOME}/.zi" && mkdir -p $zi_home
+  git clone https://github.com/z-shell/zi.git "${zi_home}/bin"
 fi
-source "$HOME/.zsh/.zinit/bin/zinit.zsh"
-autoload -Uz _zinit
-(( ${+_comps} )) && _comps[zinit]=_zinit
-### End of Zinit installer's chunk
 
-zinit light zsh-users/zsh-autosuggestions
-zinit light zdharma/fast-syntax-highlighting
-zinit light zsh-users/zsh-completions
-zinit light zsh-users/zsh-history-substring-search
-zinit light Valodim/zsh-curl-completion
+# intialize
+zi_home="${HOME}/.zi"
+source "${zi_home}/bin/zi.zsh"
+autoload -Uz _zi
+(( ${+_comps} )) && _comps[zi]=_zi
+### zi
+
+# p10k
+zi ice depth'1' atload"[[ ! -f ~/Dropbox/Mackup/dotfiles/p10k.zsh ]] || source ~/Dropbox/Mackup/dotfiles/p10k.zsh" nocd
+zi light romkatv/powerlevel10k
+
+zstyle ":history-search-multi-word" page-size "20"
+
+# load plugins
+zi light-mode for \
+  zsh-users/zsh-autosuggestions \
+  zdharma/fast-syntax-highlighting \
+  zsh-users/zsh-completions \
+  Valodim/zsh-curl-completion \
+  z-shell/F-Sy-H \
+  z-shell/H-S-MW
+
+zi ice from"gh-r" as"program"
+zi light @junegunn/fzf
 
 zinit ice from"gh-r" as"program"
-zinit load junegunn/fzf-bin
+zi light x-motemen/ghq
 
-zinit load romkatv/powerlevel10k
+zi ice lucid wait as'program' has'perl' has'convert' pick'exiftool'
+zi light exiftool/exiftool
 
-zinit ice from"gh-r" as"program"
-zinit load x-motemen/ghq
+# when rbenv command in your path (e.g. installed with Homebrew)
+zi ice wait"0" lucid
+zi light z-shell/zi-rbenv
 
-zinit snippet ~/.zsh/00_path.zsh
-zinit snippet "${HOMEBREW_PREFIX}/opt/fzf/shell/key-bindings.zsh"
+zi ice wait lucid pick"h.sh"
+zi light paoloantinori/hhighlighter
 
-zinit snippet ~/.zsh/01_utils.zsh
-zinit snippet ~/.zsh/02_keybinds.zsh
-zinit snippet ~/.zsh/03_aliases.zsh
-zinit snippet ~/.zsh/05_zsh_setting.zsh
-zinit snippet ~/.zsh/99_work.zsh
+zinit ice wait'1' lucid pick'init.sh'; zinit light "b4b4r07/enhancd"
 
-# To customize prompt, run `p10k configure` or edit ~/Dropbox/Mackup/dotfiles/p10k.zsh.
-[[ ! -f ~/Dropbox/Mackup/dotfiles/p10k.zsh ]] || source ~/Dropbox/Mackup/dotfiles/p10k.zsh
+zi snippet ~/.zsh/00_path.zsh
+zi snippet ~/.zsh/01_utils.zsh
+zi snippet ~/.zsh/02_keybinds.zsh
+zi snippet ~/.zsh/03_aliases.zsh
+zi snippet ~/.zsh/05_zsh_setting.zsh
+zi snippet ~/.zsh/99_work.zsh
