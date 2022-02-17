@@ -13,19 +13,12 @@ export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 
-# Cask for emacs
-export PATH="$HOME/.cask/bin:$PATH"
-
 # For homebrew-brewfile
 export PATH="/usr/local/sbin:$PATH"
 export HOMEBREW_PREFIX=/usr/local
-export HOMEBREW_BREWFILE=~/.brewfile
 
 # For nodenv
 eval "$(nodenv init -)"
-
-# Haskell stack
-export PATH="${HOME}/.local/bin:${PATH}"
 
 # for go
 export GOPATH=$HOME/local
@@ -41,7 +34,7 @@ export LDFLAGS="-L/usr/local/opt/avr-gcc@7/lib"
 
 # for Java
 #export JAVA_HOME=`/usr/libexec/java_home -v "1.8"`
-export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_192.jdk/Contents/Home"
+export JAVA_HOME="/Applications/Android Studio.app/Contents/jre/Contents/Home"
 PATH=${JAVA_HOME}/bin:${PATH}
 
 # for ncurses
@@ -56,8 +49,14 @@ export LDFLAGS="$LDFLAGS -L/usr/local/opt/readline/lib"
 export CPPFLAGS="$CPPFLAGS -I/usr/local/opt/readline/include"
 export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:/usr/local/opt/readline/lib/pkgconfig"
 
+export LDFLAGS="-L/usr/local/opt/libffi/lib"
+export CPPFLAGS="-I/usr/local/opt/libffi/include"
+export PKG_CONFIG_PATH="/usr/local/opt/libffi/lib/pkgconfig"
+
 
 export PATH=/usr/local/Cellar/jmeter/5.3/libexec/bin:${PATH}
 
 # Added by serverless binary installer
 export PATH="$HOME/.serverless/bin:$PATH"
+
+export THOR_MERGE="code -d $1 $2"
