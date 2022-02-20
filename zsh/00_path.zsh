@@ -1,21 +1,37 @@
-export PATH=/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+if [ `uname -m` = 'arm64' ]; then
+    HOMEBREW_BASE="/opt/homebrew"
+    export PATH="${HOMEBREW_BASE}/bin:${PATH}"
+else
+    HOMEBREW_BASE="/usr/local"
+    export HOMEBREW_PREFIX=$HOMEBREW_BASE
+    export PATH="${HOMEBREW_BASE}/sbin:${PATH}"
 
-PATH=$HOME/local/bin:$PATH
+    # for ncurses
+    export PKG_CONFIG="/usr/local/bin/pkg-config"
+    export PATH="/usr/local/opt/ncurses/bin:$PATH"
+    export LDFLAGS="-L/usr/local/opt/ncurses/lib"
+    export CPPFLAGS="-I/usr/local/opt/ncurses/include"
+    export PKG_CONFIG_PATH="/usr/local/opt/ncurses/lib/pkgconfig"
+    export LDFLAGS="-L/usr/local/opt/libffi/lib"
+    export CPPFLAGS="-I/usr/local/opt/libffi/include"
+    export PKG_CONFIG_PATH="/usr/local/opt/libffi/lib/pkgconfig"
+fi
 
 # for gnu coreutils
-export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
-export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+export PATH="${HOMEBREW_BASE}/opt/coreutils/libexec/gnubin:${PATH}"
+export MANPATH="${HOMEBREW_BASE}/opt/coreutils/libexec/gnuman:${MANPATH}"
+
+export PATH=$HOME/local/bin:$PATH
 
 # for android development
 export ANDROID_HOME=$HOME/Library/Android/sdk
-export PATH=$PATH:$ANDROID_HOME/emulator
-export PATH=$PATH:$ANDROID_HOME/tools
-export PATH=$PATH:$ANDROID_HOME/tools/bin
-export PATH=$PATH:$ANDROID_HOME/platform-tools
+export PATH=$ANDROID_HOME/emulator:$PATH
+export PATH=$ANDROID_HOME/tools:$PATH
+export PATH=$ANDROID_HOME/tools/bin:$PATH
+export PATH=$ANDROID_HOME/platform-tools:$PATH
 
-# For homebrew-brewfile
-export PATH="/usr/local/sbin:$PATH"
-export HOMEBREW_PREFIX=/usr/local
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
 
 # For nodenv
 eval "$(nodenv init -)"
@@ -25,38 +41,9 @@ export GOPATH=$HOME/local
 export PATH=$GOPATH/bin:$PATH
 export GO111MODULE=on
 
-# for flutter
-export PATH="$PATH:$HOME/local/app/flutter/bin"
-
-# for gmk
-export PATH="/usr/local/opt/avr-gcc@7/bin:$PATH"
-export LDFLAGS="-L/usr/local/opt/avr-gcc@7/lib"
-
 # for Java
 #export JAVA_HOME=`/usr/libexec/java_home -v "1.8"`
 export JAVA_HOME="/Applications/Android Studio.app/Contents/jre/Contents/Home"
 PATH=${JAVA_HOME}/bin:${PATH}
-
-# for ncurses
-export PKG_CONFIG="/usr/local/bin/pkg-config"
-
-export PATH="/usr/local/opt/ncurses/bin:$PATH"
-export LDFLAGS="-L/usr/local/opt/ncurses/lib"
-export CPPFLAGS="-I/usr/local/opt/ncurses/include"
-export PKG_CONFIG_PATH="/usr/local/opt/ncurses/lib/pkgconfig"
-
-export LDFLAGS="$LDFLAGS -L/usr/local/opt/readline/lib"
-export CPPFLAGS="$CPPFLAGS -I/usr/local/opt/readline/include"
-export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:/usr/local/opt/readline/lib/pkgconfig"
-
-export LDFLAGS="-L/usr/local/opt/libffi/lib"
-export CPPFLAGS="-I/usr/local/opt/libffi/include"
-export PKG_CONFIG_PATH="/usr/local/opt/libffi/lib/pkgconfig"
-
-
-export PATH=/usr/local/Cellar/jmeter/5.3/libexec/bin:${PATH}
-
-# Added by serverless binary installer
-export PATH="$HOME/.serverless/bin:$PATH"
 
 export THOR_MERGE="code -d $1 $2"

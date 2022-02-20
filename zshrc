@@ -39,15 +39,8 @@ zi light-mode for \
 zi ice from"gh-r" as"program"
 zi light @junegunn/fzf
 
-zinit ice from"gh-r" as"program"
+zinit ice from"gh-r" as"program" pick"*/ghq"
 zi light x-motemen/ghq
-
-zi ice lucid wait as'program' has'perl' has'convert' pick'exiftool'
-zi light exiftool/exiftool
-
-# when rbenv command in your path (e.g. installed with Homebrew)
-zi ice wait"0" lucid
-zi light z-shell/zi-rbenv
 
 zi ice wait lucid pick"h.sh"
 zi light paoloantinori/hhighlighter

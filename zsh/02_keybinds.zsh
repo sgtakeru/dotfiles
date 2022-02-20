@@ -1,5 +1,3 @@
-
-
 function git-branch-fzf() {
     local selected_branch=$(git for-each-ref --format='%(refname)' --sort=-committerdate refs/heads | perl -pne 's{^refs/heads/}{}' | fzf --query "$LBUFFER")
 
