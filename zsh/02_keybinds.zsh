@@ -42,4 +42,12 @@ bindkey " " globalias
 bindkey "^ " magic-space
 bindkey -M isearch " " magic-space
 
-export EMOJI_CLI_KEYBIND="^x^e"
+function fzf-emoji() {
+    emojis=$(curl -sSL 'https://git.io/JXXO7')
+    selected_emoji=$(echo $emojis | fzf)
+    echo $selected_emoji
+}
+
+zle -N fzf-emoji
+bindkey "^x^e" fzf-emoji
+
