@@ -36,16 +36,41 @@ zi light-mode for \
   z-shell/F-Sy-H \
   z-shell/H-S-MW
 
+# [fzf](https://github.com/junegunn/fzf)
 zi ice from"gh-r" as"program"
 zi light @junegunn/fzf
 
-zinit ice from"gh-r" as"program" pick"*/ghq"
+# [ghq](https://github.com/x-motemen/ghq)
+zi ice from"gh-r" as"program" pick"*/ghq"
 zi light x-motemen/ghq
 
 zi ice wait lucid pick"h.sh"
 zi light paoloantinori/hhighlighter
 
-zinit ice wait'1' lucid pick'init.sh'; zinit light "b4b4r07/enhancd"
+# [ripgrep](https://github.com/BurntSushi/ripgrep)
+if [ `uname -m` = 'arm64' ]; then
+    zi ice from"gh-r" as"program" bpick"*aarch64-apple-darwin*" pick"rg"
+    zi light microsoft/ripgrep-prebuilt
+fi
+
+# [exa](https://github.com/ogham/exa)
+zi ice as"program" from"gh-r" pick"*/exa"
+zi light ogham/exa
+
+# [bat](https://github.com/sharkdp/bat)
+zi ice as"program" from"gh-r" pick"bat/bat"
+zi light sharkdp/bat
+
+# [fd](https://github.com/sharkdp/fd)
+zi ice as"program" from"gh-r" pick"fd/fd"
+zi light sharkdp/fd
+
+# [delta](https://github.com/dandavison/delta)
+zi ice as"program" from"gh-r" pick"*/delta"
+zi light dandavison/delta
+
+zi ice wait'1' lucid pick'init.sh'
+zi light "b4b4r07/enhancd"
 
 zi snippet ~/.zsh/00_path.zsh
 zi snippet ~/.zsh/01_utils.zsh

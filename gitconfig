@@ -23,29 +23,48 @@
     sw = switch
     hist = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
         fetch-pulls = fetch origin +refs/pull/*:refs/remotes/pull/*
+
 [core]
     excludesfile = ~/.gitignore_global
-    pager = less -r
-[color "diff"]
-    whitespace = red
+    pager = delta
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    navigate = true  # use n and N to move between diff sections
+    side-by-side = true
+
+[merge]
+    conflictstyle = diff3
+# [merge]
+#     ff = false
+#     tool = vscode
+#     keepbackup = false
+
 [color]
     ui = auto
+
 [gui]
     editor = vim
     diffcontext = 7
     historybrowser = gitk
     fontdiff = -family \"Ricty Discord\" -size 9 -weight normal -slant roman -underline 0 -overstrike 0
+
 [diff]
-    tool = vscode
-[difftool]
-    prompt = false
-[difftool "vscode"]
-    trustExitCode = true
-    cmd = code --wait --diff $LOCAL $REMOTE
-[merge]
-    ff = false
-    tool = vscode
-    keepbackup = false
+    colorMoved = default
+# [diff]
+#     tool = vscode
+[diff "xlsx"]
+    binary = true
+    textconv = $GOPATH/bin/git-xlsx-textconv
+
+# [difftool]
+#     prompt = false
+# [difftool "vscode"]
+#     trustExitCode = true
+#     cmd = code --wait --diff $LOCAL $REMOTE
+
 [mergetool]
     prompt = false
     keepBackup = false
@@ -54,17 +73,18 @@
 
 [push]
     default = tracking
+
 [include]
     path = ~/.gitconfig.local
 
 [credential]
     helper = osxkeychain
+
 [hub]
     protocol = https
+
 [ghq]
     root = ~/local/src
-[diff "xlsx"]
-    binary = true
-    textconv = $GOPATH/bin/git-xlsx-textconv
+
 [commit]
 	template = ~/.gitmessage

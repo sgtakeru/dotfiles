@@ -1,6 +1,6 @@
 if [ `uname -m` = 'arm64' ]; then
     HOMEBREW_BASE="/opt/homebrew"
-    export PATH="${HOMEBREW_BASE}/bin:${PATH}"
+    eval "$(/opt/homebrew/bin/brew shellenv)"
 else
     HOMEBREW_BASE="/usr/local"
     export HOMEBREW_PREFIX=$HOMEBREW_BASE
