@@ -1,3 +1,12 @@
 bind main B !git rebase -i %(commit)
 bind generic + !git commit --amend
+bind main ! ?git revert %(commit)
+#bind generic 9 @bash -c "echo -n %(commit) | cut -c1-10  | tr -d '\n' | pbcopy"
+bind generic 9 @bash -c "echo -n %(commit) | pbcopy"
+
+bind main O !git sw %(branch)
+bind refs O !git sw %(branch)
+
 set diff-highlight = true
+set blob-view   = line-number:yes,interval=1 text
+
