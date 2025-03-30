@@ -22,11 +22,11 @@
     st = status -sb
     sw = switch
     hist = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
-        fetch-pulls = fetch origin +refs/pull/*:refs/remotes/pull/*
+    fetch-pulls = fetch origin +refs/pull/*:refs/remotes/pull/*
 
 [core]
-    excludesfile = ~/.gitignore_global
     pager = delta
+    editor = nvim
 
 [interactive]
     diffFilter = delta --color-only
@@ -46,7 +46,7 @@
     ui = auto
 
 [gui]
-    editor = vim
+    editor = nvim
     diffcontext = 7
     historybrowser = gitk
     fontdiff = -family \"Ricty Discord\" -size 9 -weight normal -slant roman -underline 0 -overstrike 0
@@ -76,10 +76,6 @@
 
 [include]
     path = ~/.gitconfig.local
-
-[credential]
-    helper = osxkeychain
-
 [hub]
     protocol = https
 
@@ -88,3 +84,10 @@
 
 [commit]
 	template = ~/.gitmessage
+[init]
+	defaultBranch = main
+[credential]
+	helper = 
+	helper = /usr/local/share/gcm-core/git-credential-manager
+[credential "https://dev.azure.com"]
+	useHttpPath = true
