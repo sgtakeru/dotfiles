@@ -1,15 +1,13 @@
-function git-branch-fzf() {
-    local selected_branch=$(git for-each-ref --format='%(refname)' --sort=-committerdate refs/heads | perl -pne 's{^refs/heads/}{}' | fzf --query "$LBUFFER")
-
-  if [ -n "$selected_branch" ]; then
-    BUFFER="git switch ${selected_branch}"
-    zle accept-line
-  fi
-  zle reset-prompt
+function fbr() {
+    local branches branch
+    branches=$(git branch --all | grep -v HEAD) &&
+        branch=$(echo "$branches" |
+                     fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
+        git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
 }
 
-zle -N git-branch-fzf
-bindkey "^g^b" git-branch-fzf
+zle -N fbr
+bindkey "^g^b" fbr
 
 
 function ghq-fzf() {
@@ -50,4 +48,3 @@ function fzf-emoji() {
 
 zle -N fzf-emoji
 bindkey "^x^e" fzf-emoji
-

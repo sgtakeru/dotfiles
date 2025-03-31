@@ -18,8 +18,8 @@ else
 fi
 
 # for gnu coreutils
-export PATH="${HOMEBREW_BASE}/opt/coreutils/libexec/gnubin:${PATH}"
-export MANPATH="${HOMEBREW_BASE}/opt/coreutils/libexec/gnuman:${MANPATH}"
+# export PATH="${HOMEBREW_BASE}/opt/coreutils/libexec/gnubin:${PATH}"
+# export MANPATH="${HOMEBREW_BASE}/opt/coreutils/libexec/gnuman:${MANPATH}"
 
 export PATH=$HOME/local/bin:$PATH
 
@@ -36,6 +36,9 @@ eval "$(rbenv init -)"
 # For nodenv
 eval "$(nodenv init -)"
 
+# For direnv
+eval "$(direnv hook zsh)"
+
 # for go
 export GOPATH=$HOME/local
 export PATH=$GOPATH/bin:$PATH
@@ -43,7 +46,20 @@ export GO111MODULE=on
 
 # for Java
 #export JAVA_HOME=`/usr/libexec/java_home -v "1.8"`
-export JAVA_HOME="/Applications/Android Studio.app/Contents/jre/Contents/Home"
+#                 /Applications/'Android Studio.app'/Contents/jbr/Contents/Home
+export JAVA_HOME="/Applications/Android Studio.app/Contents/jbr/Contents/Home"
 PATH=${JAVA_HOME}/bin:${PATH}
 
 export THOR_MERGE="code -d $1 $2"
+export PATH="/opt/homebrew/opt/avr-gcc@8/bin:$PATH"
+
+# for python
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+# for flutter
+export PATH=$HOME/local/flutter/bin:$PATH
+
+# for tenv
+# source $HOME/.tenv.completion.zsh

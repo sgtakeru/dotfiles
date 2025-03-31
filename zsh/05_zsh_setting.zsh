@@ -4,16 +4,16 @@
 # brainstormr=/Users/robbyrussell/Projects/development/planetargon/brainstormr
 #
 
-autoload -Uz compinit && compinit
 
 HISTFILE=$HOME/dotfiles/zsh/.zsh_history
-HISTSIZE=10000000
-SAVEHIST=10000000
+HISTSIZE=1000000
+SAVEHIST=1000000
 REPORTTIME=3                # 3秒以上かかった処理は詳細表示
 
-setopt auto_cd
-setopt auto_pushd
+autoload -Uz compinit
+compinit
 
+setopt auto_cd
 setopt auto_list            # 補完候補を一覧で表示する
 setopt auto_menu            # 補完キー連打で候補順に自動で補完する
 setopt auto_pushd           # cd 時に自動でディレクトリスタックに追加する

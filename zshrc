@@ -33,6 +33,7 @@ zi light-mode for \
   zdharma/fast-syntax-highlighting \
   zsh-users/zsh-completions \
   Valodim/zsh-curl-completion \
+  wfxr/forgit \
   z-shell/F-Sy-H \
   z-shell/H-S-MW
 
@@ -53,17 +54,23 @@ if [ `uname -m` = 'arm64' ]; then
     zi light microsoft/ripgrep-prebuilt
 fi
 
-# [bat](https://github.com/sharkdp/bat)
-zi ice as"program" from"gh-r" pick"bat/bat"
+# # [bat](https://github.com/sharkdp/bat)
+zi ice as"command" from"gh-r" mv"bat* -> bat" pick"bat/bat"
 zi light sharkdp/bat
 
-# [fd](https://github.com/sharkdp/fd)
-zi ice as"program" from"gh-r" pick"fd/fd"
+# # [fd](https://github.com/sharkdp/fd)
+zi ice as"command" from"gh-r" mv"fd* -> fd" pick"fd/fd"
 zi light sharkdp/fd
 
 # [delta](https://github.com/dandavison/delta)
 zi ice as"program" from"gh-r" pick"*/delta"
 zi light dandavison/delta
+
+# [direnv](https://github.com/direnv/direnv)
+zinit ice as"program" make'!' atclone'./direnv hook zsh > zhook.zsh' \
+    atpull'%atclone' src"zhook.zsh"
+zinit light direnv/direnv
+
 
 zi ice wait'1' lucid pick'init.sh'
 zi light "b4b4r07/enhancd"
@@ -74,3 +81,7 @@ zi snippet ~/.zsh/02_keybinds.zsh
 zi snippet ~/.zsh/03_aliases.zsh
 zi snippet ~/.zsh/05_zsh_setting.zsh
 zi snippet ~/.zsh/99_work.zsh
+
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
+
+eval "$(/Users/shigemori/.local/bin/mise activate zsh)"
