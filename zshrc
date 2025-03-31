@@ -53,10 +53,6 @@ if [ `uname -m` = 'arm64' ]; then
     zi light microsoft/ripgrep-prebuilt
 fi
 
-# [exa](https://github.com/ogham/exa)
-zi ice as"program" from"gh-r" pick"*/exa"
-zi light ogham/exa
-
 # [bat](https://github.com/sharkdp/bat)
 zi ice as"program" from"gh-r" pick"bat/bat"
 zi light sharkdp/bat

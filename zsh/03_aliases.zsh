@@ -14,22 +14,23 @@ fi
 
 
 # Common aliases
-if has 'exa'; then
-    alias e='exa --icons'
+if has 'eza'; then
+    alias e='eza --icons'
     alias l=e
     alias ls=e
-    alias ea='exa -a --icons'
+    alias ea='eza -a --icons'
     alias la=ea
-    alias ee='exa -l --icons'
-    alias eea='exa -aal --icons'
+    alias ee='eza -l --icons'
+    alias ll=ee
+    alias eea='eza -aal --icons'
     alias lla=eea
-    alias et='exa -T -L 3 -a -I "node_modules|.git|.cache|tmp/vendor" --icons|bat'
+    alias et='eza -T -L 3 -a -I "node_modules|.git|.cache|tmp/vendor" --icons|bat'
     alias lt=et
-    alias eta='exa -T -a -I "node_modules|.git|.cache|tmp/vendor" --color=always --icons |bat'
+    alias eta='eza -T -a -I "node_modules|.git|.cache|tmp/vendor" --color=always --icons |bat'
     alias lta=eta
-    alias ex='exa -l -s extension'
+    alias ex='eza -l -s extension'
     alias lx=ex
-    alias lt='exa -l -s new'
+    alias lt='eza -l -s new'
 else
     alias ls='ls -GF --color=auto'
     alias l="ls -l"
