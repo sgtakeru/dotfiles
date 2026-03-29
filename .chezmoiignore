@@ -1,0 +1,8 @@
+AGENTS.md
+README.md
+docs/**
+scripts/**
+config/**
+home/**
+cornix-layout.vil
+**/.DS_Store

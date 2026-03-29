@@ -1,0 +1,10 @@
+theme = Monokai Pro
+font-family = "HackGen35 Console NF"
+font-family = "0xProto Nerd Font"
+font-thicken = true
+font-size = 14
+
+# External shaders are synced by chezmoi externals.
+# Example:
+custom-shader = ~/.config/ghostty/shaders/cursor_warp.glsl
+custom-shader = ~/.config/ghostty/shaders/ripple_cursor.glsl

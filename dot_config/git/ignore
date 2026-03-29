@@ -1,6 +1,12 @@
-*\~
-.redcar
+/vendor
+
+*.bak.*
+*.log
+*.swp
+*.swo
 *.orig
+*.orig
+
 eproject.cfg
 patches
 TAGS
@@ -14,6 +20,7 @@ gen/
 
 # from boxen ---
 .DS_Store
+**/.DS_Store
 .DS_Store?
 .Spotlight-V100
 .Trashes
@@ -21,10 +28,6 @@ gen/
 Icon
 Thumbs.db
 ehthumbs.db
-*.swp
-*.swo
-*.orig
-*~
-\#*\#
-tags
-# ----
+
+docs/MR/*
+.env.production.*

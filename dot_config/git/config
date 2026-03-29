@@ -83,11 +83,11 @@
     root = ~/local/src
 
 [commit]
-	template = ~/.gitmessage
+	template = ~/.config/git/message
 [init]
 	defaultBranch = main
 [credential]
-	helper = 
+	helper =
 	helper = /usr/local/share/gcm-core/git-credential-manager
 [credential "https://dev.azure.com"]
 	useHttpPath = true

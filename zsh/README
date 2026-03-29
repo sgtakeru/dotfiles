@@ -1,7 +1,0 @@
-# STARTUP
-# /etc以下は無視する
-
-/etc/zshenv
-$HOME/.zshenv
-
-$ZDOTDIR/.zshrc

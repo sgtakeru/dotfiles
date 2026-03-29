@@ -1,0 +1,328 @@
+eval "$(/opt/homebrew/bin/brew shellenv)"
+eval "$(mise activate zsh)"
+eval "$(starship init zsh)"
+
+HISTFILE=$XDG_DATA_HOME/zsh/zsh_history
+
+HISTSIZE=1000000
+SAVEHIST=1000000
+REPORTTIME=3                # 3秒以上かかった処理は詳細表示
+
+export PATH=$HOME/local/bin:$PATH
+export PATH="/usr/local/opt/libpq/bin:$PATH"
+
+export LDFLAGS="-L$(brew --prefix libpq)/lib"
+export CPPFLAGS="-I$(brew --prefix libpq)/include"
+export PKG_CONFIG_PATH="$(brew --prefix libpq)/lib/pkgconfig"
+
+export LESS='-R'
+export LESSOPEN="| /opt/homebrew/bin/highlight %s --out-format xterm256 -l --force -s base16/ashes --no-trailing-nl"
+export LSCOLORS=exfxcxdxbxegedabagacad
+export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
+export WORDCHARS='*?_.[]~-=&;!#$%^(){}<>'
+
+# for android development
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$ANDROID_HOME/emulator:$PATH
+export PATH=$ANDROID_HOME/platform-tools:$PATH
+export PATH=$ANDROID_HOME/cmdline-tools/latest/bin:$PATH
+
+# for go
+export GOPATH=$HOME/local
+export PATH=$GOPATH/bin:$PATH
+
+# for Java
+#export JAVA_HOME=`/usr/libexec/java_home -v "1.8"`
+#                 /Applications/'Android Studio.app'/Contents/jbr/Contents/Home
+export JAVA_HOME="/Applications/Android Studio.app/Contents/jbr/Contents/Home"
+PATH=${JAVA_HOME}/bin:${PATH}
+
+export THOR_MERGE="code -d $1 $2"
+export PATH="/opt/homebrew/opt/avr-gcc@8/bin:$PATH"
+export PATH=$HOME/local/flutter/bin:$PATH
+export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
+
+# ----------------------------------------------
+# zsh setting
+# ----------------------------------------------
+
+# カーソル制御
+autoload -Uz add-zsh-hook
+set-cursor-shape() {
+    [[ -t 1 ]] || return
+    printf '\e[%s q' "$1"
+}
+set-cursor-beam() {
+    set-cursor-shape 5
+}
+set-cursor-block() {
+    set-cursor-shape 2
+}
+add-zsh-hook precmd set-cursor-beam
+add-zsh-hook preexec set-cursor-block
+## ここまで
+
+setopt auto_pushd           # cd 時に自動でディレクトリスタックに追加する
+
+setopt extended_history # Record start and end time
+setopt append_history
+setopt inc_append_history
+setopt share_history
+setopt hist_reduce_blanks # reduce extra blank
+setopt hist_ignore_all_dups # 既にヒストリにあるコマンドは古い方を削除
+setopt hist_ignore_space # Ignore the begining space command to history file
+setopt hist_no_store # Remove comannd of 'history' or 'fc -l' from history list
+setopt hist_no_functions # Remove functions from history list
+
+# rm * の前に確認をとる
+setopt rm_star_wait
+
+# Show exit status if it's except zero.
+setopt print_exit_value
+
+# Show process ID
+setopt long_list_jobs
+
+# Automaticall escape URL when copy and paste
+autoload -Uz url-quote-magic
+zle -N self-insert url-quote-magic
+
+# ----------------------------------------------
+# completion
+# ----------------------------------------------
+autoload -Uz compinit && compinit -i
+
+zstyle ':fzf-tab:*' fzf-command fzf
+zstyle ':fzf-tab:*' switch-group ',' '.'
+zstyle ':fzf-tab:*' fzf-flags --height=45% --layout=reverse --border
+
+# Completing Groping
+zstyle ':completion:*:options' description 'yes'
+zstyle ':completion:*:descriptions' format '%F{yellow}Completing %B%d%b%f'
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*' verbose yes
+zstyle ':completion:*' use-cache true
+
+# 補完で小文字でも大文字にマッチング
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+zstyle ':completion:*' completer _complete _match _prefix _approximate
+
+# Directory
+zstyle ':completion:*:cd:*' ignore-parents parent pwd
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+
+# セパレータを設定する
+zstyle ':completion:*' list-separator '-->'
+zstyle ':completion:*:manuals' separate-sections true
+# Make zsh know about hosts already accessed by SSH
+zstyle -e ':completion:*:(ssh|scp|sftp|rsh|rsync):hosts' hosts \
+  'reply=(${=${${(f)"$(cat /etc/ssh/ssh_known_hosts ~/.ssh/known_hosts ~/.ssh/known_hosts2 2>/dev/null)"}%%[[:space:]]*}//,/ })'
+
+# ----------------------------------------------
+# plugins
+# ----------------------------------------------
+eval "$(sheldon source)"
+
+if [ -f "$HOME/.local/share/zsh-plugins/zsh-abbr/zsh-abbr.zsh" ]; then
+    source "$HOME/.local/share/zsh-plugins/zsh-abbr/zsh-abbr.zsh"
+fi
+
+if ! command -v abbr >/dev/null 2>&1; then
+    abbr() { :; }
+fi
+
+# ----------------------------------------------
+# functions
+# ----------------------------------------------
+
+# is_exists returns true if executable $1 exists in $PATH
+is_exists() {
+    which "$1" >/dev/null 2>&1
+    return $?
+}
+
+# has is wrapper function
+has() {
+    is_exists "$@"
+}
+
+function fzf-select-branch() {
+    local branches branch
+    branches=$(git branch --all | grep -v HEAD) &&
+        branch=$(echo "$branches" |
+                     fzf-tmux -p --reverse ) &&
+        git switch $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
+}
+
+zle -N fzf-select-branch
+bindkey "^g^b" fzf-select-branch
+
+function fzf-select-ghq() {
+    local selected_dir=$(ghq list | fzf --reverse --query="$LBUFFER")
+
+    if [ -n "$selected_dir" ]; then
+        BUFFER="cd $(ghq root)/${selected_dir}"
+        zle accept-line
+    fi
+
+    zle reset-prompt
+}
+
+zle -N fzf-select-ghq
+bindkey "^]" fzf-select-ghq
+
+# expand global aliases by space
+# http://blog.patshead.com/2012/11/automatically-expaning-zsh-global-aliases---simplified.html
+globalias() {
+  if [[ $LBUFFER =~ ' [A-Z0-9]+$' ]]; then
+    zle _expand_alias
+  fi
+
+  if (( $+widgets[abbr-expand-and-insert] )); then
+    zle abbr-expand-and-insert
+  else
+    zle self-insert
+  fi
+}
+
+zle -N globalias
+bindkey " " globalias
+bindkey "^ " magic-space
+bindkey -M isearch " " magic-space
+
+function fzf-emoji() {
+    emojis=$(curl -sSL 'https://git.io/JXXO7')
+    selected_emoji=$(echo $emojis | fzf --reverse)
+    echo $selected_emoji
+}
+
+zle -N fzf-emoji
+bindkey "^x^e" fzf-emoji
+
+function fzf-history-widget() {
+    local selected
+    selected=$(
+        fc -lnr 1 \
+        | awk 'NF && !seen[$0]++' \
+        | fzf \
+            --query="$LBUFFER" \
+            --no-sort \
+            --exact \
+            --reverse \
+            --info=inline \
+            --height=45% \
+            --border
+    )
+    [[ -n "$selected" ]] || return 0
+    BUFFER="$selected"
+    CURSOR=${#BUFFER}
+    zle reset-prompt
+}
+
+zle -N fzf-history-widget
+bindkey '^R' fzf-history-widget
+
+# ----------------------------------------------
+# alias
+# ----------------------------------------------
+ABBR_QUIET=1
+alias grep='grep --color'
+alias cp="cp -i"
+alias mv="mv -i"
+alias rm="rm -i"
+alias du='du -h'
+abbr -S dud='du -hd 1'
+abbr -S duf='du -hs *'
+
+if has 'git'; then
+    abbr -S gst='git status'
+    alias g="git"
+    alias git-delete-local-branches="git branch --merged | grep -vE '^\*|main$|develop$' | xargs -p -I % git branch -d %"
+fi
+
+if has 'eza'; then
+    alias e='eza'
+    alias ls='eza'
+    alias l='eza -l'
+    alias la='eza -A'
+    alias ll='eza -l'
+    alias lla='eza -lA'
+    abbr -S ltree='eza --icons -T -L 3 -a -I "node_modules|.git|.cache|tmp/vendor" |bat'
+    alias lx='eza -l -s extension'
+    alias lt='eza -l -s new'
+else
+    alias ls='ls -GF'
+    alias l="ls -l"
+    alias ld='ls -ld'          # Show info about the directory
+    alias ll='ls -l'           # Show long file information
+    alias la='ls -A'           # Show hidden files
+    alias lla='ls -lA'         # Show hidden all files
+    alias lx='ls -lXB'         # Sort by extension
+    alias lk='ls -lSr'         # Sort by size, biggest last
+    alias lc='ls -ltcr'        # Sort by and show change time, most recent last
+    alias lu='ls -ltur'        # Sort by and show access time, most recent last
+    alias lt='ls -ltr'         # Sort by date, most recent last
+    alias lr='ls -lR'          # Recursive ls
+    alias ldot='ls -ld .*'
+fi
+
+alias tmux='tmux -2'
+alias mux='tmux -2'
+alias less='less -M -g -i -J --underline-special'
+
+if has 'bat'; then
+    alias cat="bat -p"
+    abbr -S catl="bat"
+else
+    abbr -S cat="highlight $1 --out-format xterm256 --force -s base16/ashes --no-trailing-nl"
+    abbr -S catl="highlight $1 --out-format xterm256 -l --force -s base16/ashes --no-trailing-nl"
+fi
+
+if has 'delta'; then
+    alias diff='delta --color-only'
+else
+    alias diff='diff -u'
+fi
+
+# デフォルトの
+export PATH="/opt/homebrew/opt/trash/bin:$PATH"
+if type trash > /dev/null 2>&1; then
+    abbr -S rm='trash -F'
+else
+    echo "Warning: 'trash' command is not available. File deletion will be permanent."
+    abbr -S rm='function() {
+        echo -n "Are you sure you want to permanently delete files? [Y/n] "
+        read -r response
+        case "$response" in
+            [Yy]|[Yy][Ee][Ss]|"")
+                command rm "$@"
+                ;;
+            [Nn]|[Nn][Oo])
+                echo "Deletion cancelled."
+                ;;
+            *)
+                echo "Invalid input. Deletion cancelled."
+                ;;
+        esac
+    }'
+fi
+
+alias -g H='| head'
+alias -g T='| tail'
+alias -g G='| grep'
+alias -g W='| wc'
+alias -g X='| xargs'
+alias -g L="| less"
+alias -g F='| "$(available $INTERACTIVE_FILTER)"'
+alias -g S="| sort"
+alias -g N=" >/dev/null 2>&1"
+alias -g N1=" >/dev/null"
+alias -g N2=" 2>/dev/null"
+
+if has "jq"; then
+    alias -g J='| jq .'
+fi
+
+if has 'nvim'; then
+    alias vi='nvim'
+fi

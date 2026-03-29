@@ -1,0 +1,37 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+add_newline = true
+
+[directory]
+truncation_length = 3
+
+[git_branch]
+symbol = ''
+format = '\([$symbol$branch(:$remote_branch)]($style)\)'
+
+[git_status]
+format = '([$all_status$ahead_behind]($style)  )'
+up_to_date = '✓'
+
+[package]
+disabled = true
+
+[nodejs]
+format = '[$symbol($version )]($style)'
+version_format = "${raw}"
+symbol = "󰎙 "
+disabled = false
+
+[gcloud]
+disabled = true
+
+[aws]
+format = '[$symbol($profile )~$region ]($style)'
+style = 'bold blue'
+symbol = '󰯫 '
+[aws.region_aliases]
+ap-northeast-1 = 'ane1'
+
+[ruby]
+format = '[$symbol($version )]($style)'
+version_format = '${raw}'
+symbol = "  "

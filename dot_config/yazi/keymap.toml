@@ -1,0 +1,5 @@
+# ファイル/ディレクトリのパスをクリップボードにコピー
+[[mgr.prepend_keymap]]
+on = ["y", "p"]
+run = "shell 'printf \"%s\" $0 | pbcopy' --orphan"
+desc = "パスをクリップボードにコピー"
