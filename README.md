@@ -23,6 +23,9 @@ chezmoi init --source ~/local/src/github.com/sgtakeru/dotfiles
 chezmoi apply --source ~/local/src/github.com/sgtakeru/dotfiles
 ```
 
+`chezmoi list` が空の場合は、chezmoi がデフォルトの `~/.local/share/chezmoi` を見ています。
+このリポジトリを source にするコマンドでは `--source ~/local/src/github.com/sgtakeru/dotfiles` を付けてください。
+
 ### 新しい macOS を初期化する
 
 新しい端末では、`git clone` 前にそのまま実行できます。
@@ -42,6 +45,8 @@ chezmoi apply --source ~/local/src/github.com/sgtakeru/dotfiles
 ```
 
 tmux plugin manager (`tpm`) `chezmoi` external として同期します。
+
+`chezmoi` 導入時の変更内容は [docs/chezmoi-migration.md](/Users/shigemori/local/src/github.com/sgtakeru/dotfiles/docs/chezmoi-migration.md) にまとめています。
 
 `chezmoi` の普段使いのコマンドは [docs/chezmoi-cheatsheet.md](/Users/shigemori/local/src/github.com/sgtakeru/dotfiles/docs/chezmoi-cheatsheet.md) にまとめています。
 
