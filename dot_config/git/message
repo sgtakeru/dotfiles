@@ -1,29 +1,27 @@
 
 
 # <type>
+# build: Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm)
+# ci: Changes to our CI configuration files and scripts (examples: GitHub Actions)
+# docs: (changes to the documentation)
 # feat: (new feature for the user, not a new feature for build script)
 # fix: (bug fix for the user, not a fix to a build script)
-# docs: (changes to the documentation)
-# style: (formatting, missing semi colons, etc; no production code change)
+# pref:  A code change that improves performance
 # refactor: (refactoring production code, eg. renaming a variable)
+# style: (formatting, missing semi colons, etc; no production code change)
 # test: (adding missing tests, refactoring tests; no production code change)
-# chore: (updating grunt tasks etc; no production code change)
 # 
 # https://gist.github.com/joshbuchea/6f47e86d2510bce28f8e7f42ae84c716
-# feat: add hat wobble
-# ^--^  ^------------^
-# |     |
-# |     +-> Summary in present tense.
-# |
-# +-------> Type: chore, docs, feat, fix, refactor, style, or test.
-
-# 50-character <type>(optional scope): <emoji> #<issue> description
-# 72-character wrapped longer description. This should answer:
+# <type>(<scope>): <short summary>
+#   │       │             └─⫸ Summary in present tense. Not capitalized. No period at the end.
+#   │       └─⫸ Commit Scope: optional
+#   └─⫸ Commit Type: build|ci|docs|feat|fix|perf|refactor|test
 #
-# * Why was this change necessary?
-# * How does it address the problem?
-# * Are there any side effects?
+# 本文
+# 要約と同様に、命令形現在形「fix」を使用し、「fixed」や「fixes」は使用しないでください。
+# コミットメッセージ本文で、変更の動機を説明してください。
+# このコミットメッセージには、変更を行う理由を明記する必要があります。
+# 変更の影響を示すために、変更前の動作と変更後の動作を比較して記載することもできます。
 #
-# Include a link to the ticket, if any.
+# https://github.com/angular/angular/blob/main/contributing-docs/commit-message-guidelines.md
 #
-# ref: https://github.com/thoughtbot/dotfiles/blob/master/gitmessage
