@@ -1,0 +1,23 @@
+onboarding = false
+
+[experimental]
+pane_history = true
+switch_ascii_input_source_in_prefix = true
+[terminal]
+[update]
+[theme]
+name = "catppuccin"
+auto_switch = false
+
+[keys]
+prefix = "ctrl+t"
+previous_workspace = "prefix+up"
+next_workspace = "prefix+down"
+
+#previous_tab = "prefix+p"
+#next_tab = "prefix+n"
+#
+[ui]
+confirm_close = true
+prompt_new_tab_name = false
+jshow_agent_labels_on_pane_borders = true
