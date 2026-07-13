@@ -1,0 +1,12 @@
+theme = "everforest_dark"
+
+[editor]
+line-number = "relative"
+
+[editor.cursor-shape]
+insert = "bar"
+select = "underline"
+
+[keys.normal]
+x = "delete_selection"
+d = ["extend_to_line_bounds", "delete_selection"]
