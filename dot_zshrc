@@ -326,3 +326,5 @@ fi
 if has 'nvim'; then
     alias vi='nvim'
 fi
+
+. "$HOME/.local/share/../bin/env"
