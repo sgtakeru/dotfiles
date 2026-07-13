@@ -23,3 +23,6 @@ settings = "prefix+,"
 confirm_close = true
 prompt_new_tab_name = false
 jshow_agent_labels_on_pane_borders = true
+
+[advanced]
+scrollback_limit_bytes = 100000000
