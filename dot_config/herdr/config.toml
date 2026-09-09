@@ -3,6 +3,9 @@ onboarding = false
 [experimental]
 pane_history = true
 switch_ascii_input_source_in_prefix = true
+reveal_hidden_cursor_for_cjk_ime = true
+cjk_ime_agents = ["claude", "pi", "codex"]
+
 [terminal]
 [update]
 [theme]
@@ -16,13 +19,39 @@ next_workspace = "prefix+down"
 goto = ["prefix+s", "prefix+g"]
 settings = "prefix+,"
 
-#previous_tab = "prefix+p"
-#next_tab = "prefix+n"
 #
 [ui]
 confirm_close = true
 prompt_new_tab_name = false
-jshow_agent_labels_on_pane_borders = true
+show_agent_labels_on_pane_borders = true
 
 [advanced]
 scrollback_limit_bytes = 100000000
+
+[[keys.command]]
+key = "prefix+t"
+type = "popup"
+command = "tig"
+width = "98%"
+height = "90%"
+
+# herdr-file-viewer: prefix+f で split 起動
+[[keys.command]]
+key = "prefix+f"
+type = "shell"
+command = "herdr plugin action invoke open-file-viewer --plugin herdr-file-viewer"
+description = "Open file viewer in split pane"
+
+[[keys.command]]              # …or in its own tab
+key = "prefix+shift+f"
+type = "shell"
+command = "herdr plugin action invoke open-file-viewer-tab --plugin herdr-file-viewer"
+
+[[keys.command]]
+key = "prefix+shift+h"
+type = "shell"
+command = "herdr plugin action invoke hunk.diff.worktree-split"
+description = "Open worktree diff in split pane"
+
+[ui.toast]
+delivery = "herdr"
