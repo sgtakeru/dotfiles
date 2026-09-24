@@ -237,7 +237,22 @@ abbr -S duf='du -hs *'
 if has 'git'; then
     abbr -S gst='git status'
     alias g="git"
-    alias git-delete-local-branches="git branch --merged | grep -vE '^\*|main$|develop$' | xargs -p -I % git branch -d %"
+    git-delete-local-branches() {
+        local output branch current reply
+        local -a branches
+        output=$(git for-each-ref --format='%(refname:short)' --merged HEAD refs/heads) || return
+        current=$(git branch --show-current) || return
+        branches=("${(@f)output}")
+
+        for branch in "${branches[@]}"; do
+            [[ -n $branch && $branch != "$current" && $branch != main && $branch != develop ]] || continue
+
+            printf 'Delete merged local branch %s? [y/N] ' "$branch" >&2
+            read -r reply || return 1
+            [[ $reply == [yY] ]] || continue
+            git branch -d -- "$branch" || return
+        done
+    }
 fi
 
 if has 'eza'; then
